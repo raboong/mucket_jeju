@@ -1,0 +1,202 @@
+/* 
+::before / ::after 설명
+1. ::before 역할 - 선택한 앨리먼트(요소=태그)앞에 가상 콘텐츠 삽입하는 역할
+
+2. ::after 역할 - 선택한 앨리먼트 위에 가상 콘텐츠 삽입하는 역할
+
+*/
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: pretendard;
+}
+/* #wrap {
+    width: 100%;
+    position: relative;
+} */
+
+/* 메뉴 */
+#gnb {
+    font-weight: bold;
+}
+header img {
+    width: 130px;
+    margin: 10px 0 0 80px;
+}
+ul {
+    list-style: none;
+    font-size: 16px;
+}
+.snb li {
+    margin-top: 72px;
+    font-weight: normal;
+}
+header a {
+    text-decoration: none;
+    color: #000;
+}
+a:hover {
+    color: #ff4e60;
+}
+
+header {
+    width: 100vw;
+    background: #ffffff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 0 100px;
+    border-bottom: 1px solid #d8d8d8;
+    display:flex;
+    /* 플렉스는 반응형 웹 사용 시 쓰는 것
+    padding, margin을 사용할 수 없음 */
+    justify-content: space-between ;
+    /* 컨텐츠 사이의 간격을 균일하게 처리 */
+    box-sizing: border-box;
+    z-index: 2000;
+    /* border 안쪽으로 들어와라 */
+}
+header img {
+    width: 150px;
+    padding: 30px 0;
+}
+header #gnb {
+    display: flex;
+    justify-content: space-evenly;
+    /* 컨텐츠 사이와 양끝 간격 균일하게 처리 */
+    align-items: center;
+    flex-basis: 85%;
+}
+
+header > #gnb::before {
+    /* 컨텐츠 빈공간 출력 */
+    content: "";
+    width: 100%;
+    position: absolute;
+    top: 171px;
+    left: 0;
+    background: #fff;
+    border-top: 1px solid #d8d8d8;
+    box-shadow: 0px 10px 10px 0px rgba(186, 186, 187, 0.06) ;
+    display: block;
+    height: 200px;
+}
+
+header > #gnb.on::before {
+    display: block;
+}
+
+header > #gnb::before {
+    display: none;
+}
+
+#util {
+    position: absolute;
+    right: 260px;
+    padding: 20px 0;
+}
+
+header > #gnb > li .snb {
+    position: absolute;
+    top: 150px;
+    display: none;
+    /* display:none을 사용하는 이유 -> 일시적으로 안보이게 하려고 */
+}
+
+header > #gnb.on >li .snb {
+    display: block;
+}
+header > #gnb > li >.snb > ul > li+li {
+    margin-top: 20px;
+}
+#line img {
+    position: absolute;
+    width: 32.5px;
+    top: -50px;
+    right: 550px;
+}
+
+/* 제목 */
+
+#jewrap p:nth-child(1) {
+    width: 300px;
+    font-size: 45px;
+    font-weight: bold;
+    position: absolute;
+    top: 280px;
+    left: 240px;
+    line-height: 60px;
+    color:  #fd2525;
+}
+#jewrap p:nth-child(2) {
+    width: 250px;
+    font-size: 25px;
+    font-weight: 500;
+    position: absolute;
+    top: 360px;
+    left: 240px;
+}
+
+
+#ci img {
+    position: absolute;
+    top: 500px;
+    /* left: -180px; */
+}
+
+#jewrap1 p:nth-child(1) {
+    width: 300px;
+    font-size: 45px;
+    font-weight: bold;
+    position: absolute;
+    top: 1830px;
+    left: 240px;
+    line-height: 60px;
+    color:  #fd2525;
+}
+#jewrap1 p:nth-child(2) {
+    width: 250px;
+    font-size: 25px;
+    font-weight: 500;
+    position: absolute;
+    top: 1910px;
+    left: 240px;
+}
+
+#ci1 img {
+    position: absolute;
+    top: 1950px;
+    /* left: -180px; */
+}
+
+
+
+
+
+/* footer */
+
+footer > div {
+    width: 1500px;
+    height: 190px;
+    position: absolute;
+    top: 3200px;    
+}
+
+#fowrap {
+    position: absolute;
+}
+
+#setitle {
+    position: absolute;
+    top: 70px;
+    left: 595px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#setitle b:nth-child(1) {
+    color: #fd2525;
+}
