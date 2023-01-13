@@ -1,0 +1,306 @@
+/* 
+::before / ::after 설명
+1. ::before 역할 - 선택한 앨리먼트(요소=태그)앞에 가상 콘텐츠 삽입하는 역할
+
+2. ::after 역할 - 선택한 앨리먼트 위에 가상 콘텐츠 삽입하는 역할
+
+*/
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: pretendard;
+}
+/* #wrap {
+    width: 100%;
+    position: relative;
+} */
+
+/* 메뉴 */
+#gnb {
+    font-weight: bold;
+}
+header img {
+    width: 130px;
+    margin: 10px 0 0 80px;
+}
+ul {
+    list-style: none;
+    font-size: 16px;
+}
+.snb li {
+    margin-top: 72px;
+    font-weight: normal;
+}
+header a {
+    text-decoration: none;
+    color: #000;
+}
+a:hover {
+    color: #ff4e60;
+}
+
+header {
+    width: 100vw;
+    background: #ffffff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 0 100px;
+    border-bottom: 1px solid #d8d8d8;
+    display:flex;
+    /* 플렉스는 반응형 웹 사용 시 쓰는 것
+    padding, margin을 사용할 수 없음 */
+    justify-content: space-between ;
+    /* 컨텐츠 사이의 간격을 균일하게 처리 */
+    box-sizing: border-box;
+    z-index: 2000;
+    /* border 안쪽으로 들어와라 */
+}
+header img {
+    width: 150px;
+    padding: 30px 0;
+}
+header #gnb {
+    display: flex;
+    justify-content: space-evenly;
+    /* 컨텐츠 사이와 양끝 간격 균일하게 처리 */
+    align-items: center;
+    flex-basis: 85%;
+}
+
+header > #gnb::before {
+    /* 컨텐츠 빈공간 출력 */
+    content: "";
+    width: 100%;
+    position: absolute;
+    top: 171px;
+    left: 0;
+    background: #fff;
+    border-top: 1px solid #d8d8d8;
+    box-shadow: 0px 10px 10px 0px rgba(186, 186, 187, 0.06) ;
+    display: block;
+    height: 200px;
+}
+
+header > #gnb.on::before {
+    display: block;
+}
+
+header > #gnb::before {
+    display: none;
+}
+
+#util {
+    position: absolute;
+    right: 260px;
+    padding: 20px 0;
+}
+
+header > #gnb > li .snb {
+    position: absolute;
+    top: 150px;
+    display: none;
+    /* display:none을 사용하는 이유 -> 일시적으로 안보이게 하려고 */
+}
+
+header > #gnb.on >li .snb {
+    display: block;
+}
+header > #gnb > li >.snb > ul > li+li {
+    margin-top: 20px;
+}
+#line img {
+    position: absolute;
+    width: 32.5px;
+    top: -50px;
+    right: 550px;
+}
+
+
+
+/* 카카오맵 */
+
+.map_wrap, .map_wrap * {
+    margin:0;
+    padding:0;
+    /* font-family:'Malgun Gothic',dotum,'돋움',sans-serif; */
+    font-size: 15px;
+}
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active {
+    color:#000;
+    text-decoration: none;
+}
+.map_wrap {
+    position:relative;
+    width: 100%;
+    height: 925px;
+}
+#menu_wrap {
+    position:absolute;
+    top: 170px;
+    left:0;
+    bottom:0;
+    width: 400px;
+    margin: 0;
+    padding: 10px;
+    overflow-y:auto;
+    background:rgb(255, 255, 255);
+    z-index: 1;
+    font-size: 12px;
+}
+.bg_white {
+    background:#fff;
+}
+#menu_wrap hr {
+
+    display: block; 
+    height: 1px;
+    border: 0; 
+    border-top: 1px solid #ececec;
+    margin:3px 0;
+}
+#menu_wrap .option{
+    text-align: center;
+}
+#menu_wrap .option p {
+    margin:10px 0;
+}  
+#menu_wrap .option button {
+    margin:15px;
+}
+button {
+    width: 70px;
+    height: 31px; 
+    border-radius: 5px;
+    border: 1px solid #ff4e60;
+    background: white;
+    color: #fd2525;
+    font-weight: bold;
+}
+button:hover {
+    width: 70px;
+    height: 31px;
+    border-radius: 5px;
+    border: none;
+    background: #fd2525;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input {
+    width: 230px;
+    height: 29px;
+    border-radius: 5px;
+    border: 1px solid #afafaf;
+}
+
+input[value="제주시 노형동 맛집"] {
+    padding: 2px;
+    margin-left: 20px;
+}
+
+/* 식당 리스트 정리 */
+
+#placesList li {
+    list-style: none;
+}
+#placesList .item {
+    position:relative;
+    border-bottom:1px solid #ececec;
+    padding: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 65px;
+    margin-left: 10px;
+}
+#placesList .item span {
+    display: block;
+    margin-top:4px;
+}
+#placesList .item h5, #placesList .item .info {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#placesList .item .info{
+    padding:10px 0 10px 55px;
+}
+#placesList .info .gray {
+    color:#696969;
+}
+#placesList .info .jibun {
+    padding-left: 26px;
+    background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;
+}
+#placesList .info .tel {
+    color:#fd2525;
+}
+#placesList .item .markerbg {
+    float:left;
+    position:absolute;
+    width:36px; 
+    height:37px;
+    margin:10px 0 0 10px;
+    background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+#placesList .item .marker_1 {
+    background-position: 0 -10px;
+}
+#placesList .item .marker_2 {
+    background-position: 0 -56px;
+}
+#placesList .item .marker_3 {
+    background-position: 0 -102px
+}
+#placesList .item .marker_4 {
+    background-position: 0 -148px;
+}
+#placesList .item .marker_5 {
+    background-position: 0 -194px;
+}
+#placesList .item .marker_6 {
+    background-position: 0 -240px;
+}
+#placesList .item .marker_7 {
+    background-position: 0 -286px;
+}
+#placesList .item .marker_8 {
+    background-position: 0 -332px;
+}
+#placesList .item .marker_9 {
+    background-position: 0 -378px;
+}
+#placesList .item .marker_10 {
+    background-position: 0 -423px;
+}
+#placesList .item .marker_11 {
+    background-position: 0 -470px;
+}
+#placesList .item .marker_12 {
+    background-position: 0 -516px;
+}
+#placesList .item .marker_13 {
+    background-position: 0 -562px;
+}
+#placesList .item .marker_14 {
+    background-position: 0 -608px;
+}
+#placesList .item .marker_15 {
+    background-position: 0 -654px;
+}
+#pagination {
+    margin:10px auto;
+    text-align: center;
+}
+#pagination a {
+    display:inline-block;
+    margin-right:10px;
+}
+#pagination .on {
+    font-weight: bold; 
+    cursor: default;
+    color:#777;
+}
