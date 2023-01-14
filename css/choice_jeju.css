@@ -664,6 +664,10 @@ header > #gnb > li >.snb > ul > li+li {
     color: #fd2525;
 }
 
+#button {
+    position: absolute;
+}
+
 #add a:nth-child(1) {
     width: 130px;
     text-align: center;
